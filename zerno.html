@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Зерно — обжарка кофе в Казани</title>
+<style>
+:root{--forest:#1f3a2e;--kraft:#d8c49c;--paper:#efe6d2;--roast:#3b2416;--leaf:#7fa36b;--ink:#1a1a17}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans CJK SC','Noto Sans',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+header{background:var(--forest);color:var(--paper)}
+nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:'Noto Serif CJK SC',Georgia,serif;font-weight:900;font-size:28px;letter-spacing:-.5px}
+.logo span{display:inline-block;width:14px;height:20px;background:var(--kraft);border-radius:50%;margin-left:8px;transform:rotate(25deg);position:relative;top:1px}
+nav ul{display:flex;gap:32px;list-style:none;font-size:15px;opacity:.85}
+.btn{display:inline-block;background:var(--kraft);color:var(--roast);font-weight:700;padding:14px 26px;border-radius:4px;text-decoration:none;font-size:15px;border:0;font-family:inherit;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;padding:72px 0 88px;align-items:end}
+.hero h1{font-family:'Noto Serif CJK SC',Georgia,serif;font-weight:900;font-size:76px;line-height:1.02;letter-spacing:-2px}
+.hero p{font-size:19px;max-width:520px;margin:28px 0 36px;opacity:.85}
+.scale{background:var(--paper);color:var(--ink);border-radius:6px;padding:28px}
+.scale h3{font-size:15px;font-weight:700;margin-bottom:18px}
+.beans{display:flex;justify-content:space-between;margin-bottom:10px}
+.bean{width:44px;height:60px;border-radius:50%;position:relative}
+.bean::after{content:"";position:absolute;left:50%;top:10%;height:80%;width:3px;background:rgba(255,255,255,.35);border-radius:3px;transform:translateX(-50%) rotate(8deg)}
+.scale .lbl{display:flex;justify-content:space-between;font-size:13px;opacity:.7}
+.scale .now{margin-top:22px;padding-top:18px;border-top:1px solid #cbb994;font-size:15px}
+.scale .now b{font-family:'Noto Serif CJK SC',serif;font-size:22px;display:block}
+section{padding:96px 0}
+h2{font-family:'Noto Serif CJK SC',Georgia,serif;font-weight:900;font-size:46px;letter-spacing:-1px;margin-bottom:12px}
+.sub{font-size:18px;opacity:.75;max-width:600px;margin-bottom:48px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pack{background:#fff8ea;border:2px solid var(--roast);padding:28px;position:relative}
+.pack .origin{font-size:14px;opacity:.65}
+.pack h4{font-family:'Noto Serif CJK SC',serif;font-size:26px;margin:4px 0 14px}
+.pack .notes{font-size:15px;margin-bottom:22px}
+.bar{height:8px;background:#e5d6b6;border-radius:4px;margin:6px 0 20px}
+.bar i{display:block;height:100%;background:var(--roast);border-radius:4px}
+.price{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:20px}
+.price button{border:0;background:var(--forest);color:var(--paper);padding:10px 18px;border-radius:4px;font-weight:700;cursor:pointer}
+.how{background:var(--kraft)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
+.steps div{border-top:3px solid var(--roast);padding-top:18px}
+.steps div::before{counter-increment:s;content:counter(s);font-family:'Noto Serif CJK SC',serif;font-weight:900;font-size:40px;display:block}
+.steps h5{font-size:18px;margin:6px 0}
+.sub-box{background:var(--forest);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:56px;border-radius:6px}
+.sub-box h2{color:var(--kraft)}
+form{display:grid;gap:14px}
+input,select{font:inherit;padding:14px 16px;border:0;border-radius:4px;background:var(--paper)}
+footer{padding:36px 0;font-size:14px;opacity:.7}
+@media(max-width:800px){.wrap{padding:0 20px}nav ul{display:none}.hero{grid-template-columns:1fr;padding:40px 0 56px;gap:32px}.hero h1{font-size:44px;letter-spacing:-1px}.hero p{font-size:17px}.grid,.steps,.sub-box{grid-template-columns:1fr}.sub-box{padding:28px}h2{font-size:34px}section{padding:64px 0}.bean{width:34px;height:46px}}
+</style></head><body>
+<header><div class="wrap">
+<nav><div class="logo">Зерно<span></span></div><ul><li>Кофе</li><li>Подписка</li><li>Для кофеен</li><li>Контакты</li></ul><a class="btn" href="#sub">Заказать</a></nav>
+<div class="hero">
+<div><h1>Обжариваем во вторник. Привозим к пятнице.</h1>
+<p>Небольшая обжарочная в Казани. Свежий кофе в зёрнах и молотый под вашу турку, гейзер или эспрессо-машину.</p>
+<a class="btn" href="#sub">Подобрать кофе</a></div>
+<div class="scale"><h3>Степень обжарки</h3>
+<div class="beans"><div class="bean" style="background:#b98a55"></div><div class="bean" style="background:#96673d"></div><div class="bean" style="background:#6e4527"></div><div class="bean" style="background:#4d2d19"></div><div class="bean" style="background:#2e190d"></div></div>
+<div class="lbl"><span>светлая, для фильтра</span><span>тёмная, для эспрессо</span></div>
+<div class="now">На этой неделе в обжарке<b>Эфиопия Иргачефф, Бразилия Моджиана</b></div></div>
+</div></div></header>
+<section><div class="wrap"><h2>Кофе этой недели</h2><p class="sub">Каждую неделю обжариваем 4–5 сортов. Пачка 250 г, доставка по Казани бесплатно от 1 500 ₽.</p>
+<div class="grid">
+<div class="pack"><div class="origin">Эфиопия, Иргачеффе</div><h4>Черника и жасмин</h4><div class="notes">Яркая кислотность, чайное тело. Для воронки и аэропресса.</div>Обжарка<div class="bar"><i style="width:25%"></i></div><div class="price">790 ₽<button>В корзину</button></div></div>
+<div class="pack"><div class="origin">Колумбия, Уила</div><h4>Карамель и слива</h4><div class="notes">Сбалансированный, сладкий. Хорош и в чашке, и с молоком.</div>Обжарка<div class="bar"><i style="width:55%"></i></div><div class="price">690 ₽<button>В корзину</button></div></div>
+<div class="pack"><div class="origin">Бразилия, Моджиана</div><h4>Орех и шоколад</h4><div class="notes">Плотный и мягкий, без кислинки. Для эспрессо и капучино.</div>Обжарка<div class="bar"><i style="width:80%"></i></div><div class="price">590 ₽<button>В корзину</button></div></div>
+</div></div></section>
+<section class="how"><div class="wrap"><h2>Как это работает</h2><p class="sub">От обжарки до вашей чашки проходит не больше четырёх дней.</p>
+<div class="steps"><div><h5>Вы заказываете</h5>До понедельника, на сайте или в Telegram.</div><div><h5>Мы обжариваем</h5>Во вторник, небольшими партиями по 5 кг.</div><div><h5>Отдыхает зерно</h5>Два дня, чтобы раскрылся вкус.</div><div><h5>Курьер привозит</h5>В пятницу, в удобный интервал.</div></div></div></section>
+<section id="sub"><div class="wrap"><div class="sub-box"><div><h2>Подписка на кофе</h2><p>Пачка нового сорта каждые две недели. Скидка 15%, отменить можно в любой момент.</p></div>
+<form><input placeholder="Ваше имя"><input placeholder="Телефон или Telegram"><select><option>Для эспрессо-машины</option><option>Для турки</option><option>Для воронки</option></select><button class="btn" type="button">Оформить подписку</button></form></div></div></section>
+<footer><div class="wrap">Зерно, Казань, ул. Пушкина, 12. Концепт сайта.</div></footer>
+</body></html>
