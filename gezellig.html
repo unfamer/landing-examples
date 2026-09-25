@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gezellig Nederlands — нидерландский для жизни в Нидерландах</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF5EA; --bg-soft:#F6EDDC; --card:#FFFFFF;
+    --text:#2B2620; --text-soft:#6E6355;
+    --accent:#E36A2A; --accent-2:#F0904F; --accent-soft:#FCE6D2;
+    --green:#6E8B58; --green-soft:#E7EEDD;
+    --border:#EEE1CB; --shadow:rgba(60,45,25,.10);
+    --radius-l:28px; --radius-m:18px; --radius-s:12px;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211A13; --bg-soft:#291F16; --card:#2B2117;
+      --text:#F3E9DA; --text-soft:#C6B7A2;
+      --accent:#F0824A; --accent-2:#F5A05F; --accent-soft:#3B2A1B;
+      --green:#93B27C; --green-soft:#31392A;
+      --border:#40331F; --shadow:rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211A13; --bg-soft:#291F16; --card:#2B2117;
+    --text:#F3E9DA; --text-soft:#C6B7A2;
+    --accent:#F0824A; --accent-2:#F5A05F; --accent-soft:#3B2A1B;
+    --green:#93B27C; --green-soft:#31392A;
+    --border:#40331F; --shadow:rgba(0,0,0,.45);
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:calc(84px + env(safe-area-inset-top,0px));}
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.5; -webkit-font-smoothing:antialiased;}
+  img,svg{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; margin:0; letter-spacing:-.01em;}
+  h2{font-size:clamp(28px,4vw,40px);}
+  h3{font-size:20px;}
+  p{margin:0;}
+  .eyebrow{font-family:var(--sans); font-weight:700; color:var(--green); font-size:14px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; justify-content:center;
+    padding:14px 26px; border-radius:100px; font-family:var(--sans); font-weight:700; font-size:15px;
+    border:1.5px solid transparent; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    text-decoration:none; white-space:nowrap;
+  }
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .btn-primary{background:var(--accent); color:#fff; box-shadow:0 10px 24px -10px rgba(227,106,42,.55);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 16px 28px -10px rgba(227,106,42,.6);}
+  .btn-ghost{background:transparent; color:var(--text); border-color:var(--border);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+  .btn-sm{padding:10px 18px; font-size:14px;}
+  section{padding:88px 0;}
+  @media(max-width:720px){section{padding:56px 0;}}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    padding-top:env(safe-area-inset-top,0px);
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  header.scrolled{border-color:var(--border);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-weight:600; font-size:19px;}
+  .logo .mark{width:32px; height:32px; flex:none;}
+  .navlinks{display:flex; gap:30px; list-style:none; margin:0; padding:0; font-size:15px; font-weight:600;}
+  .navlinks a{text-decoration:none; color:var(--text-soft); transition:color .15s;}
+  .navlinks a:hover{color:var(--accent);}
+  .nav-right{display:flex; align-items:center; gap:14px;}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .burger span{display:block; width:22px; height:2px; background:var(--text); margin:5px 0; border-radius:2px;}
+  @media(max-width:920px){
+    .navlinks{display:none;}
+    .burger{display:block;}
+  }
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; padding:8px 24px 20px; border-top:1px solid var(--border);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:12px 4px; text-decoration:none; color:var(--text); font-weight:600; border-bottom:1px solid var(--border);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 0 40px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+  @media(max-width:920px){.hero-grid{grid-template-columns:1fr; gap:40px;}}
+  .hero h1{font-size:clamp(36px,5.2vw,58px); line-height:1.06;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero-sub{margin-top:20px; font-size:18px; color:var(--text-soft); max-width:46ch;}
+  .hero-cta{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .hero-art{position:relative; aspect-ratio:1/1; max-width:480px; margin:0 auto;}
+  .hero-art .blob{position:absolute; inset:0; border-radius:44% 56% 60% 40%/48% 42% 58% 52%; background:linear-gradient(150deg,var(--accent-soft),var(--green-soft)); }
+  .hero-art svg{position:relative; width:78%; margin:11% auto;}
+  .chip{
+    position:absolute; background:var(--card); border-radius:16px; padding:10px 16px; box-shadow:0 14px 30px -12px var(--shadow);
+    font-weight:700; font-size:13px; display:flex; align-items:center; gap:8px; border:1px solid var(--border);
+  }
+  .chip.c1{top:2%; right:-4%;}
+  .chip.c2{bottom:6%; left:-8%;}
+  .chip.c3{bottom:-4%; right:8%; font-family:var(--serif); font-weight:600; font-style:italic; font-size:14px; transform:rotate(-3deg);}
+  @media(max-width:560px){.chip{font-size:11.5px; padding:8px 12px;} .chip.c1{right:0;} .chip.c2{left:0;}}
+
+  .feature-strip{margin-top:64px; padding-top:36px; border-top:1px solid var(--border);}
+  .feature-strip .wrap{display:grid; grid-template-columns:repeat(5,1fr); gap:20px;}
+  @media(max-width:920px){.feature-strip .wrap{grid-template-columns:repeat(2,1fr);}}
+  .feature-item{display:flex; flex-direction:column; gap:10px; font-size:13.5px; color:var(--text-soft); font-weight:600; line-height:1.35;}
+  .feature-item svg{width:26px; height:26px; color:var(--accent);}
+
+  /* ---------- FORMATS ---------- */
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head p{margin-top:12px; color:var(--text-soft); font-size:16px;}
+  .format-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  @media(max-width:1020px){.format-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.format-grid{grid-template-columns:1fr;}}
+  .fcard{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius-l); padding:28px 24px;
+    display:flex; flex-direction:column; gap:14px; transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .fcard:hover{transform:translateY(-4px); box-shadow:0 20px 40px -18px var(--shadow);}
+  .ficon{width:44px; height:44px; border-radius:14px; background:var(--accent-soft); display:flex; align-items:center; justify-content:center;}
+  .ficon svg{width:22px; height:22px; color:var(--accent);}
+  .fcard ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--text-soft);}
+  .fcard li{display:flex; gap:8px;}
+  .fcard li svg{width:15px; height:15px; flex:none; margin-top:3px; color:var(--green);}
+  .price-row{margin-top:auto; padding-top:10px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .price{font-family:var(--serif); font-size:26px; font-weight:600;}
+  .price-note{font-size:12.5px; color:var(--text-soft);}
+
+  /* highlight two-up */
+  .highlight-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:22px; margin-top:22px;}
+  @media(max-width:860px){.highlight-grid{grid-template-columns:1fr;}}
+  .hl-card{border-radius:var(--radius-l); padding:32px; border:1px solid var(--border); background:var(--card);}
+  .hl-card.subscription{
+    background:linear-gradient(155deg, var(--green-soft), var(--card) 55%);
+    border-color:var(--green); position:relative; overflow:hidden;
+  }
+  .ribbon{position:absolute; top:18px; right:-40px; background:var(--green); color:#fff; padding:6px 46px; font-size:12px; font-weight:800; transform:rotate(28deg);}
+  .hl-price{font-family:var(--serif); font-size:38px; margin:14px 0 18px;}
+  .hl-card ul{list-style:none; padding:0; margin:0 0 22px; display:flex; flex-direction:column; gap:10px; font-size:14.5px;}
+  .hl-card li{display:flex; gap:10px;}
+  .hl-card li svg{width:16px; height:16px; flex:none; margin-top:3px; color:var(--green);}
+  .sub-options{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
+  @media(max-width:460px){.sub-options{grid-template-columns:1fr;}}
+  .sub-opt{border:1px solid var(--border); border-radius:var(--radius-m); padding:16px;}
+  .sub-opt .p{font-family:var(--serif); font-size:20px; margin:4px 0 8px;}
+
+  /* ---------- STORY / ABOUT ---------- */
+  .story{background:var(--bg-soft); border-radius:40px; margin:0 16px; padding:64px 0;}
+  @media(max-width:720px){.story{border-radius:0; margin:0;}}
+  .story-head{max-width:620px; margin:0 auto 48px; text-align:center;}
+  .route{position:relative; max-width:880px; margin:0 auto 40px;}
+  .route-line{position:relative; height:4px; background:var(--border); border-radius:4px; margin:0 34px;}
+  .route-fill{position:absolute; left:0; top:0; height:100%; width:0%; background:var(--accent); border-radius:4px; transition:width .5s ease;}
+  .route-stops{position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; margin:0 10px;}
+  .stop{
+    width:54px; height:54px; border-radius:50%; background:var(--card); border:3px solid var(--border);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .25s ease; flex:none;
+  }
+  .stop svg{width:22px; height:22px; color:var(--text-soft); transition:color .25s ease;}
+  .stop.active{border-color:var(--accent); background:var(--accent); transform:scale(1.12); box-shadow:0 10px 22px -8px rgba(227,106,42,.5);}
+  .stop.active svg{color:#fff;}
+  .stop-label{position:absolute; top:66px; left:50%; transform:translateX(-50%); font-size:12px; font-weight:700; color:var(--text-soft); width:100px; text-align:center;}
+  @media(max-width:640px){
+    .route-line{margin:0 27px;}
+    .stop{width:44px; height:44px;}
+    .stop svg{width:18px; height:18px;}
+    .stop-label{display:none;}
+  }
+  .story-panel{
+    max-width:720px; margin:56px auto 0; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-l);
+    padding:36px; display:flex; gap:22px; align-items:flex-start; min-height:170px;
+  }
+  @media(max-width:560px){.story-panel{flex-direction:column; padding:26px;}}
+  .story-panel .num{font-family:var(--serif); font-size:44px; color:var(--accent-soft); font-weight:600; line-height:1;}
+  .story-panel h3{margin-bottom:10px;}
+  .story-panel p{color:var(--text-soft); font-size:15.5px; line-height:1.6;}
+  .story-fade{transition:opacity .25s ease;}
+  .story-fade.fading{opacity:0;}
+
+  /* interview + team etc reuse fcard style */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+  .team-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media(max-width:760px){.team-grid{grid-template-columns:1fr;}}
+  .team-card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-l); padding:26px; display:flex; gap:18px; align-items:center;}
+  .avatar{width:64px; height:64px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:22px; font-weight:600; color:#fff;}
+  .avatar.a1{background:linear-gradient(140deg,var(--accent),var(--accent-2));}
+  .avatar.a2{background:linear-gradient(140deg,var(--green),#8FAE79);}
+  .team-card .role{font-size:13px; color:var(--text-soft); margin-top:2px;}
+  .team-card .tags{margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;}
+  .tag{font-size:11.5px; background:var(--accent-soft); color:var(--accent); padding:4px 10px; border-radius:100px; font-weight:700;}
+
+  /* reviews */
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media(max-width:860px){.review-grid{grid-template-columns:1fr;}}
+  .review{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-l); padding:26px;}
+  .review-top{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .review .avatar{width:42px; height:42px; font-size:15px;}
+  .stars{color:var(--accent); font-size:14px; letter-spacing:2px;}
+  .review p{color:var(--text-soft); font-size:14.5px; line-height:1.6;}
+
+  /* FAQ */
+  .faq{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{width:100%; text-align:left; background:none; border:none; padding:20px 4px; font-family:var(--sans); font-size:16px; font-weight:700; color:var(--text); display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:20px;}
+  .faq-q .plus{flex:none; width:20px; height:20px; position:relative;}
+  .faq-q .plus::before,.faq-q .plus::after{content:''; position:absolute; background:var(--accent); border-radius:2px; transition:transform .2s ease;}
+  .faq-q .plus::before{width:20px; height:2.5px; top:8.75px; left:0;}
+  .faq-q .plus::after{width:2.5px; height:20px; left:8.75px; top:0;}
+  .faq-item.open .plus::after{transform:rotate(90deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-a p{padding:0 4px 20px; color:var(--text-soft); font-size:14.5px; line-height:1.6; max-width:60ch;}
+
+  /* final CTA */
+  .final-cta{background:linear-gradient(135deg, var(--accent-soft), var(--green-soft)); border-radius:40px; margin:0 16px; padding:56px; display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;}
+  @media(max-width:720px){.final-cta{border-radius:24px; margin:0 12px; padding:36px 26px;}}
+  .final-cta .actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  footer{padding:40px 0 calc(30px + env(safe-area-inset-bottom,0px)); text-align:center; color:var(--text-soft); font-size:13.5px;}
+
+  /* ---------- MODAL ---------- */
+  .overlay{position:fixed; inset:0; background:rgba(30,22,14,.5); backdrop-filter:blur(2px); display:none; align-items:center; justify-content:center; z-index:100; padding:20px;}
+  .overlay.open{display:flex;}
+  .modal{background:var(--card); border-radius:var(--radius-l); max-width:480px; width:100%; padding:32px; position:relative; max-height:85vh; overflow-y:auto;}
+  .modal-close{position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:none; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--text-soft);}
+  .modal-close:hover{color:var(--accent); border-color:var(--accent);}
+  .modal h3{font-size:24px; margin-bottom:6px; padding-right:30px;}
+  .modal .price{margin:14px 0;}
+  .modal ul{list-style:none; padding:0; margin:0 0 22px; display:flex; flex-direction:column; gap:10px; font-size:14.5px; color:var(--text-soft);}
+  .modal li{display:flex; gap:10px;}
+  .modal li svg{width:16px; height:16px; flex:none; margin-top:3px; color:var(--green);}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:13px; font-weight:700; margin-bottom:6px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:12px 14px; border-radius:12px; border:1.5px solid var(--border); background:var(--bg); color:var(--text);
+    font-family:var(--sans); font-size:14.5px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--accent);}
+  .form-note{font-size:12.5px; color:var(--text-soft); margin-top:10px;}
+  .success-box{display:none; text-align:center; padding:20px 0;}
+  .success-box.show{display:block;}
+  .success-box svg{width:48px; height:48px; color:var(--green); margin:0 auto 14px;}
+
+  [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].vis{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+    .fcard, .btn-primary{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav">
+    <a href="#top" class="logo">
+      <svg class="mark" viewBox="0 0 32 32" fill="none"><path d="M16 4c-4 3-6 7-6 11a6 6 0 0 0 12 0c0-4-2-8-6-11z" fill="var(--accent)"/><path d="M16 15c-3-3-7-3-9-1 2 4 6 5 9 3" fill="var(--green)"/><path d="M16 15c3-3 7-3 9-1-2 4-6 5-9 3" fill="var(--green)"/><rect x="14.4" y="19" width="3.2" height="9" rx="1.4" fill="#8a6b4a"/></svg>
+      Gezellig Nederlands
+    </a>
+    <ul class="navlinks">
+      <li><a href="#formats">Форматы</a></li>
+      <li><a href="#story">О нас</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn btn-primary btn-sm" onclick="openModal('signup')">Записаться</button>
+      <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#formats">Форматы</a>
+    <a href="#story">О нас</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Онлайн-школа нидерландского языка</p>
+        <h1 style="margin-top:14px;">Нидерландский для <span class="accent">вашей жизни</span> в Нидерландах</h1>
+        <p class="hero-sub">Понятные занятия, живая практика и поддержка на пути к вашим целям — учёба, работа, экзамены и уверенное общение в реальных ситуациях.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="openModal('signup')">Записаться на консультацию</button>
+          <a href="#formats" class="btn btn-ghost">Выбрать формат</a>
+        </div>
+      </div>
+      <div class="hero-art" data-reveal>
+        <div class="blob"></div>
+        <svg viewBox="0 0 200 220" fill="none">
+          <path d="M100 20c-30 22-46 52-46 82a46 46 0 0 0 92 0c0-30-16-60-46-82z" fill="var(--accent)"/>
+          <path d="M100 95c-22-20-52-20-68-6 14 28 44 36 68 22" fill="var(--green)"/>
+          <path d="M100 95c22-20 52-20 68-6-14 28-44 36-68 22" fill="var(--green)"/>
+          <rect x="94" y="130" width="12" height="70" rx="6" fill="#8a6b4a"/>
+        </svg>
+        <div class="chip c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg> Inburgering · KNM · NT2</div>
+        <div class="chip c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Занятие 65 минут</div>
+        <div class="chip c3">gezellig, ja? ♥</div>
+      </div>
+    </div>
+
+    <div class="feature-strip">
+      <div class="wrap">
+        <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v9z"/></svg>Живая практика и уверенное общение</div>
+        <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>Подготовка к экзаменам и целям — учёба, работа</div>
+        <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Nederlands для работы и учёбы</div>
+        <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.6"/><path d="M2 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/></svg>Индивидуально, в паре и в мини-группах</div>
+        <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.6c0 5.6-8.8 10.4-8.8 10.4S3.2 14.2 3.2 8.6a4.6 4.6 0 0 1 8.8-2 4.6 4.6 0 0 1 8.8 2z"/></svg>Поддержка между занятиями</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section id="formats">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Форматы занятий</p>
+        <h2>Выберите, как вам удобнее учиться</h2>
+        <p>Один урок длится 65 минут, если не указано иное.</p>
+      </div>
+      <div class="format-grid">
+
+        <div class="fcard" data-reveal>
+          <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+          <h3>Индивидуальные занятия</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Полное внимание преподавателя</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Гибкий темп и своя программа</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Подготовка к экзаменам</li>
+          </ul>
+          <div class="price-row"><span class="price">€50</span><span class="price-note">1 занятие · €450 за 10</span></div>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('individual')">Подробнее</button>
+        </div>
+
+        <div class="fcard" data-reveal>
+          <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 21c0-3.6 2.7-6.2 6-6.2s6 2.6 6 6.2M12 21c0-3.6 2.7-6.2 6-6.2s6 2.6 6 6.2"/></svg></div>
+          <h3>Занятия в паре</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Учиться вместе веселее</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Разговорная практика вдвоём</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Грамматика и лексика</li>
+          </ul>
+          <div class="price-row"><span class="price">€65</span><span class="price-note">за двоих · €27,5 с человека за 10</span></div>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('pair')">Подробнее</button>
+        </div>
+
+        <div class="fcard" data-reveal>
+          <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="8" r="2.6"/><circle cx="17" cy="8" r="2.6"/><circle cx="12" cy="9.5" r="2.6"/><path d="M2 21c0-3.3 2.3-5.8 5.5-5.8M22 21c0-3.3-2.3-5.8-5.5-5.8M7 21c0-3.6 2.2-6.2 5-6.2s5 2.6 5 6.2"/></svg></div>
+          <h3>Мини-группы (3–5 человек)</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Уровни A1 / A2 / B1</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>8 занятий в месяц</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Дружелюбная атмосфера</li>
+          </ul>
+          <div class="price-row"><span class="price">€180</span><span class="price-note">в месяц</span></div>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('group')">Подробнее</button>
+        </div>
+
+        <div class="fcard" data-reveal>
+          <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+          <h3>Персональный интенсив</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Для конкретных целей и сроков</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Подготовка к HBO/WO</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Контроль прогресса</li>
+          </ul>
+          <div class="price-row"><span class="price">€55</span><span class="price-note">1 занятие · €500 за 10</span></div>
+          <button class="btn btn-ghost btn-sm" onclick="openModal('intensive')">Подробнее</button>
+        </div>
+
+      </div>
+
+      <div class="highlight-grid">
+        <div class="hl-card" data-reveal>
+          <div class="ficon" style="margin-bottom:10px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <h3>Подготовка к собеседованию</h3>
+          <p style="color:var(--text-soft); font-size:14.5px; margin-top:8px;">Уверенно рассказать о себе, ответить на сложные вопросы и чувствовать себя спокойно.</p>
+          <div class="sub-options">
+            <div class="sub-opt"><b style="font-size:13px;">Разовая подготовка</b><div class="p">€99</div><span class="price-note">1,5 часа</span></div>
+            <div class="sub-opt"><b style="font-size:13px;">Полная программа</b><div class="p">€899</div><span class="price-note">10 занятий</span></div>
+          </div>
+          <button class="btn btn-ghost btn-sm" style="margin-top:18px;" onclick="openModal('interview')">Подробнее</button>
+        </div>
+
+        <div class="hl-card subscription" data-reveal>
+          <div class="ribbon">Самый выгодный</div>
+          <div class="ficon" style="background:var(--card); margin-bottom:10px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><path d="M12 2l2.6 6.6L21 10l-5.4 4 1.7 7L12 17.5 6.7 21l1.7-7L3 10l6.4-1.4z"/></svg></div>
+          <h3>Подписка GN на год</h3>
+          <p style="color:var(--text-soft); font-size:14.5px; margin-top:8px;">Для тех, кто настроен на серьёзный результат и любит говорить на нидерландском регулярно.</p>
+          <div class="hl-price">€1999<span style="font-size:16px; font-weight:600; color:var(--text-soft);"> / год</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>40 основных встреч по 65 минут</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>25 коротких консультаций 20–30 минут</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Персональный план обучения</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Сопровождение в чате между занятиями</li>
+          </ul>
+          <button class="btn btn-primary btn-sm" onclick="openModal('subscription')">Подробнее</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY / ABOUT -->
+  <section id="story">
+    <div class="story">
+      <div class="wrap">
+        <div class="story-head" data-reveal>
+          <p class="eyebrow">О нас</p>
+          <h2>Путь к вашему «gezellig» на нидерландском</h2>
+        </div>
+
+        <div class="route">
+          <div class="route-line"><div class="route-fill" id="routeFill"></div></div>
+          <div class="route-stops" id="routeStops">
+            <button class="stop active" data-stop="0" aria-label="Кто мы"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg><span class="stop-label">Кто мы</span></button>
+            <button class="stop" data-stop="1" aria-label="Как мы учим"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5L10 6h5l3.5 11.5M10 6L8 10h7"/></svg><span class="stop-label">Как мы учим</span></button>
+            <button class="stop" data-stop="2" aria-label="Атмосфера"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-4z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M7 4c0 1.5-1.5 1.5-1.5 3M11 4c0 1.5-1.5 1.5-1.5 3"/></svg><span class="stop-label">Атмосфера</span></button>
+            <button class="stop" data-stop="3" aria-label="Куда идём"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-4.5 2-2 4.5 4.5-2 2-4.5z"/></svg><span class="stop-label">Куда идём</span></button>
+          </div>
+        </div>
+
+        <div class="story-panel" data-reveal>
+          <span class="num" id="storyNum">01</span>
+          <div class="story-fade" id="storyFade">
+            <h3 id="storyTitle">Мы — Иван и Катя</h3>
+            <p id="storyText">Основатели Gezellig Nederlands. Вместе с командой преподавателей, включая носителей языка, помогаем людям учить нидерландский для учёбы, работы, переезда и уверенного общения — без академической сухости.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Преподаватели</p>
+        <h2>Команда, которая говорит на вашем языке — и на нидерландском</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card" data-reveal>
+          <div class="avatar a1">И</div>
+          <div>
+            <h3>Ivan</h3>
+            <div class="role">Сооснователь и преподаватель</div>
+            <div class="tags"><span class="tag">Носитель культуры Нидерландов</span><span class="tag">Опыт 7+ лет</span></div>
+          </div>
+        </div>
+        <div class="team-card" data-reveal>
+          <div class="avatar a2">K</div>
+          <div>
+            <h3>Katja</h3>
+            <div class="role">Сооснователь и преподаватель</div>
+            <div class="tags"><span class="tag">Разговорная практика</span><span class="tag">Экзамены и дети</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Отзывы</p>
+        <h2>Что говорят наши ученики</h2>
+      </div>
+      <div class="review-grid">
+        <div class="review" data-reveal>
+          <div class="review-top"><div class="avatar a1" style="width:42px;height:42px;font-size:15px;">Е</div><div><b>Екатерина</b><div class="stars">★★★★★</div></div></div>
+          <p>Занимаюсь уже несколько месяцев. Стала намного увереннее говорить, разобралась с грамматикой и полюбила язык.</p>
+        </div>
+        <div class="review" data-reveal>
+          <div class="review-top"><div class="avatar a2" style="width:42px;height:42px;font-size:15px;">А</div><div><b>Александр</b><div class="stars">★★★★★</div></div></div>
+          <p>Готовился к собеседованию на нидерландском. Разобрали типичные вопросы, отработали ответы — и я получил предложение.</p>
+        </div>
+        <div class="review" data-reveal>
+          <div class="review-top"><div class="avatar a1" style="width:42px;height:42px;font-size:15px;">Д</div><div><b>Диана</b><div class="stars">★★★★★</div></div></div>
+          <p>Занимаемся в паре с мужем. Уроки проходят легко и интересно, стали больше понимать на слух. Рекомендуем.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head" style="margin:0 auto 40px; text-align:center;" data-reveal>
+        <p class="eyebrow">Вопросы и ответы</p>
+        <h2>Часто задаваемые вопросы</h2>
+      </div>
+      <div class="faq" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Как проходит первое занятие?<span class="plus"></span></button>
+          <div class="faq-a"><p>На коротком вводном созвоне мы определяем уровень, цели и удобный формат, затем подбираем преподавателя и расписание.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Подходит ли обучение для начинающих?<span class="plus"></span></button>
+          <div class="faq-a"><p>Да, мы начинаем с нуля и постепенно выходим на разговорную практику уже с первых занятий.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Можно ли подготовиться к Inburgering, KNM, NT2, MVV?<span class="plus"></span></button>
+          <div class="faq-a"><p>Да, это одно из основных направлений — подбираем программу под конкретный экзамен и срок.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Можно ли заниматься в паре или группе?<span class="plus"></span></button>
+          <div class="faq-a"><p>Да, есть форматы для двоих и мини-групп до 5 человек — можно прийти со своей парой или присоединиться к уже набранной группе.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="contacts">
+    <div class="wrap">
+      <div class="final-cta" data-reveal>
+        <div>
+          <h2 style="font-size:clamp(24px,3vw,32px);">Начните говорить на нидерландском уже сегодня</h2>
+          <p style="margin-top:10px; color:var(--text-soft); max-width:46ch;">Запишитесь на бесплатную консультацию — расскажем о форматах, подберём преподавателя и ответим на все вопросы.</p>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="openModal('signup')">Записаться на консультацию</button>
+          <a href="#" class="btn btn-ghost">Задать вопрос</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© Gezellig Nederlands. Онлайн-школа нидерландского языка.</div>
+</footer>
+
+<!-- TARIFF MODAL -->
+<div class="overlay" id="tariffOverlay" onclick="if(event.target===this) closeModal('tariff')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('tariff')">✕</button>
+    <h3 id="tModalTitle">Название тарифа</h3>
+    <div class="price" id="tModalPrice">€0</div>
+    <ul id="tModalList"></ul>
+    <button class="btn btn-primary" style="width:100%;" onclick="closeModal('tariff'); openModal('signup');">Записаться на консультацию</button>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div class="overlay" id="signupOverlay" onclick="if(event.target===this) closeModal('signup')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('signup')">✕</button>
+    <div id="signupForm">
+      <h3>Записаться на консультацию</h3>
+      <p style="color:var(--text-soft); font-size:14px; margin-top:6px;">Бесплатно, 15–20 минут. Подберём формат и преподавателя.</p>
+      <form onsubmit="submitSignup(event)" style="margin-top:22px;">
+        <div class="field"><label>Имя</label><input type="text" required placeholder="Как к вам обращаться"></div>
+        <div class="field"><label>Telegram или телефон</label><input type="text" required placeholder="@username или +7 900 000-00-00"></div>
+        <div class="field"><label>Формат, который интересует</label>
+          <select>
+            <option>Индивидуальные занятия</option>
+            <option>Занятия в паре</option>
+            <option>Мини-группы</option>
+            <option>Персональный интенсив</option>
+            <option>Подготовка к собеседованию</option>
+            <option>Подписка GN на год</option>
+            <option>Пока не знаю, нужна консультация</option>
+          </select>
+        </div>
+        <div class="field"><label>Комментарий (необязательно)</label><textarea rows="3" placeholder="Ваш уровень, цели, удобное время"></textarea></div>
+        <button class="btn btn-primary" style="width:100%;" type="submit">Отправить заявку</button>
+        <p class="form-note">Нажимая «Отправить», вы соглашаетесь с обработкой данных.</p>
+      </form>
+    </div>
+    <div class="success-box" id="signupSuccess">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+      <h3>Заявка отправлена</h3>
+      <p style="color:var(--text-soft); margin-top:8px;">Мы свяжемся с вами в ближайшее время, чтобы подобрать удобный формат.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 8));
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  function toggleFaq(btn){
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+    if(!isOpen){ item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+  }
+
+  // Story route
+  const storyData = [
+    {title:'Мы — Иван и Катя', text:'Основатели Gezellig Nederlands. Вместе с командой преподавателей, включая носителей языка, помогаем людям учить нидерландский для учёбы, работы, переезда и уверенного общения — без академической сухости.'},
+    {title:'Практика с первого занятия', text:'Мы не начинаем с правил ради правил. Каждая тема сразу превращается в разговор: реальные ситуации на работе, на приёме у врача, в магазине или на собеседовании.'},
+    {title:'Atmosphere: gezellig, а не строго', text:'Никакого давления и оценок за ошибки. Мы создаём тёплую, спокойную атмосферу — учиться в ней приятно, а значит и результат приходит быстрее.'},
+    {title:'От первых слов до жизни на нидерландском', text:'Наша цель — не просто сдать экзамен, а чувствовать себя свободно: понимать соседей, коллег, врача и друзей, и говорить без страха ошибиться.'}
+  ];
+  const stops = document.querySelectorAll('.stop');
+  const routeFill = document.getElementById('routeFill');
+  const storyFade = document.getElementById('storyFade');
+  const storyTitle = document.getElementById('storyTitle');
+  const storyText = document.getElementById('storyText');
+  const storyNum = document.getElementById('storyNum');
+  function setStop(i){
+    stops.forEach(s => s.classList.toggle('active', +s.dataset.stop === i));
+    routeFill.style.width = (i/(stops.length-1)*100) + '%';
+    storyFade.classList.add('fading');
+    setTimeout(() => {
+      storyTitle.textContent = storyData[i].title;
+      storyText.textContent = storyData[i].text;
+      storyNum.textContent = '0' + (i+1);
+      storyFade.classList.remove('fading');
+    }, 200);
+  }
+  stops.forEach(s => s.addEventListener('click', () => setStop(+s.dataset.stop)));
+  let autoIndex = 0, autoTimer = setInterval(() => { autoIndex = (autoIndex+1)%stops.length; setStop(autoIndex); }, 5000);
+  document.getElementById('routeStops').addEventListener('click', () => clearInterval(autoTimer));
+
+  // Tariff modal data
+  const tariffs = {
+    individual: {title:'Индивидуальные занятия', price:'€50 / занятие · €450 за 10', items:['Полное внимание преподавателя','Гибкий темп обучения','Индивидуальная программа','Подготовка к экзаменам','Nederlands для учёбы, работы и повседневной жизни']},
+    pair: {title:'Занятия в паре', price:'€65 за двоих · €550 за 10 (€27,5 с человека)', items:['Учиться вместе веселее и эффективнее','Для друзей, партнёров или знакомых','Разговорная практика','Грамматика и лексика','Подготовка к экзаменам и другим целям']},
+    group: {title:'Мини-группы (3–5 человек)', price:'€180 / месяц', items:['Больше практики и общения','Уровни A1 / A2 / B1','8 занятий в месяц (2 раза в неделю)','Общий Nederlands и подготовка к экзаменам','Дружелюбная атмосфера, количество мест ограничено']},
+    intensive: {title:'Персональный интенсив', price:'€55 / занятие · €500 за 10', items:['Для конкретных целей и ограниченных сроков','Подготовка к экзаменам','Подготовка к учёбе в HBO/WO','Nederlands для работы','Больше домашней работы и контроль прогресса']},
+    interview: {title:'Подготовка к собеседованию', price:'€99 разовая · €899 за полную программу (10 занятий)', items:['Разбор вакансии и типичных вопросов','Пробное интервью','Профессиональная лексика','Практика с ментором','Подробная обратная связь']},
+    subscription: {title:'Подписка GN на год', price:'€1999 / год', items:['40 основных встреч по 65 минут','25 коротких консультаций по 20–30 минут','Персональный план обучения','Подготовка к экзаменам, учёбе и работе','Сопровождение в чате между занятиями','Максимальная гибкость и поддержка от команды']}
+  };
+  function openModal(name){
+    if(name === 'signup'){
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('signupSuccess').classList.remove('show');
+      document.getElementById('signupOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+    const t = tariffs[name];
+    if(!t) return;
+    document.getElementById('tModalTitle').textContent = t.title;
+    document.getElementById('tModalPrice').textContent = t.price;
+    document.getElementById('tModalList').innerHTML = t.items.map(i => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>${i}</li>`).join('');
+    document.getElementById('tariffOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(which){
+    const id = which === 'signup' ? 'signupOverlay' : 'tariffOverlay';
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeModal('signup'); closeModal('tariff'); } });
+  function submitSignup(e){
+    e.preventDefault();
+    document.getElementById('signupForm').style.display = 'none';
+    document.getElementById('signupSuccess').classList.add('show');
+  }
+</script>
+</body>
+</html>
