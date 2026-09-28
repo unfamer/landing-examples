@@ -1,6 +1,6 @@
 # Лендинги для малого бизнеса
 
-Демо-проекты лендингов: адаптивная вёрстка, формы заявок с отправкой в Telegram, интерактивный калькулятор. Компании вымышленные, сайты полностью рабочие.
+Демо-проекты лендингов: адаптивная вёрстка, формы заявок с отправкой в Telegram, интерактивный калькулятор, онлайн-запись по расписанию. Компании вымышленные, сайты полностью рабочие.
 
 **Смотреть онлайн:** https://unfamer.github.io/landing-examples/
 
@@ -13,6 +13,7 @@
 | <img src="assets/previews/kit.jpg" width="260"> | [**Кит**](https://unfamer.github.io/landing-examples/kit/) | Школа английского для детей: программы по возрасту, расписание групп, пробный урок |
 | <img src="assets/previews/rovno.jpg" width="260"> | [**Ровно**](https://unfamer.github.io/landing-examples/rovno/) | Ремонт квартир: калькулятор стоимости на JavaScript, этапы работ, примеры объектов |
 | <img src="assets/previews/pion.jpg" width="260"> | [**Пионовый сад**](https://unfamer.github.io/landing-examples/pion/) | Цветочная мастерская: букеты недели, условия доставки, заявка флористу |
+| <img src="assets/previews/dyshi.jpg" width="260"> | [**Дыши**](https://unfamer.github.io/landing-examples/dyshi/) | Студия йоги: интерактивное расписание по дням, запись на занятие во всплывающем окне, абонементы |
 
 ## Технологии
 
@@ -30,6 +31,7 @@ garage/index.html   Гараж 42
 kit/index.html      Кит
 rovno/index.html    Ровно
 pion/index.html     Пионовый сад
+dyshi/index.html    Дыши
 assets/previews/    превью для галереи
 ```
 
