@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Примеры лендингов: адаптивная вёрстка, формы заявок в Telegram, калькуляторы.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+<title>Примеры лендингов</title>
+<style>
+:root{--bg:#f4f2ee;--ink:#1c1d21;--muted:#6b6d73;--card:#fff;--line:#e2dfd8;--accent:#2d7fd3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans','Noto Sans CJK SC',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+header{padding:72px 0 48px}
+h1{font-family:'Noto Serif','Noto Serif CJK SC',Georgia,serif;font-size:56px;line-height:1.05;letter-spacing:-1.5px;max-width:760px}
+header p{font-size:19px;color:var(--muted);max-width:620px;margin-top:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tags span{background:var(--card);border:1px solid var(--line);padding:7px 14px;border-radius:20px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding-bottom:72px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.card img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.card div{padding:20px 22px 24px}
+.card h2{font-size:21px;margin-bottom:4px}
+.card p{color:var(--muted);font-size:15px}
+.card .go{display:inline-block;margin-top:12px;color:var(--accent);font-weight:700;font-size:15px}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:15px}
+footer a{color:var(--accent)}
+@media(max-width:760px){.wrap{padding:0 18px}header{padding:44px 0 32px}h1{font-size:36px}header p{font-size:17px}.grid{grid-template-columns:1fr;gap:20px}}
+</style></head><body>
+<div class="wrap">
+<header><h1>Лендинги для малого бизнеса</h1>
+<p>Демо-проекты: адаптивная вёрстка, формы заявок с отправкой в Telegram, калькулятор стоимости. Компании вымышленные, сайты полностью рабочие.</p>
+<div class="tags"><span>HTML / CSS / JavaScript</span><span>Адаптив под телефоны</span><span>Без конструкторов</span></div></header>
+<div class="grid">
+<a class="card" href="zerno/"><img src="assets/previews/zerno.jpg" alt="Лендинг обжарочной кофе" loading="lazy"><div><h2>Зерно</h2><p>Обжарочная кофе: каталог со шкалой обжарки, подписка на кофе.</p><span class="go">Открыть сайт →</span></div></a>
+<a class="card" href="garage/"><img src="assets/previews/garage.jpg" alt="Сайт автосервиса" loading="lazy"><div><h2>Гараж 42</h2><p>Автосервис: прайс по категориям, форма онлайн-записи.</p><span class="go">Открыть сайт →</span></div></a>
+<a class="card" href="kit/"><img src="assets/previews/kit.jpg" alt="Лендинг детской школы английского" loading="lazy"><div><h2>Кит</h2><p>Школа английского для детей: программы, расписание, пробный урок.</p><span class="go">Открыть сайт →</span></div></a>
+<a class="card" href="rovno/"><img src="assets/previews/rovno.jpg" alt="Лендинг ремонта квартир" loading="lazy"><div><h2>Ровно</h2><p>Ремонт квартир: интерактивный калькулятор стоимости, этапы работ.</p><span class="go">Открыть сайт →</span></div></a>
+<a class="card" href="pion/"><img src="assets/previews/pion.jpg" alt="Сайт цветочной мастерской" loading="lazy"><div><h2>Пионовый сад</h2><p>Цветочная мастерская: букеты недели, доставка, заявка флористу.</p><span class="go">Открыть сайт →</span></div></a>
+</div>
+<footer>Нужен похожий сайт или Telegram-бот? Пишите в Telegram: <a href="https://t.me/your_username">@your_username</a></footer>
+</div></body></html>
